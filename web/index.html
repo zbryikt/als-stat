@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head prefix="og: http://ogp.me/ns#">
+    <meta charset="utf-8">
+    <title>template</title>
+    <!-- libraries-->
+    <script type="text/javascript" src="assets/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/d3js/3.3.11/d3.v3.min.js"></script>
+    <script type="text/javascript" src="assets/angular/1.2.3/angular.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/bootstrap/3.0.2/css/bootstrap.min.css">
+    <script type="text/javascript" src="assets/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+    <!-- custom files-->
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <script type="text/javascript" src="chart.min.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+  </head>
+  <body ng-app ng-controller="main">
+    <div id="content">
+      <h3>中華民國運動神經元疾病病友協會捐款金額統計</h3>
+      <p>從 2007年起，捐款總金額 652萬1362元，2014年8月單月截至今日為止金額 460萬6828元，佔總金額
+        <big><b style="color:red">70.6%</b></big>。下圖 X 軸為時間， Y 軸為金額(新台幣)
+      </p>
+      <canvas id="chart"></canvas>
+    </div>
+  </body>
+</html>
