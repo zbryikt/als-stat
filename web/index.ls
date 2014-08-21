@@ -27,7 +27,7 @@ main = ($scope, $http) ->
         for m from 1 to 12
           labels ++= ["#y/#{if m > 9 => '' else '0'}#{m}"]
       labels = ["2006/12"] ++ labels
-      datasets = [{data:[], label: "捐款金額"}]
+      datasets = [{data:[], label: "捐款金額",strokeColor: "rgba(255,0,0,1)",pointColor: "rgba(0,0,0,0.5)",pointStrokeColor:"rgba(0,0,0,0.9)"}]
       for i from 0 til 96
         datasets.0.data ++= [d[i] or 0]
       ret = {labels, datasets}
@@ -50,7 +50,7 @@ main = ($scope, $http) ->
           if m == 6 and d == 31 => break
           labels ++= ["#m/#d"]
       labels = ["05/31"] ++ labels
-      datasets = [{data:[], label: "捐款金額"}]
+      datasets = [{data:[], label: "捐款金額",strokeColor: "rgba(255,0,0,1)",pointColor: "rgba(0,0,0,0.5)",pointStrokeColor:"rgba(0,0,0,0.9)"}]
       for i from 0 til 83
         datasets.0.data ++= [data[i] or 0]
       ret = {labels, datasets}

@@ -4,7 +4,7 @@ doctype html
 - var useog = false
 - var lib = { jquery: true, d3js: true, angular: true, bootstrap: true, semantic: false }
 - var assets = "assets"
-- var thumbnail = "http://dummy.thumbnail"
+- var thumbnail = "http://zbryikt.github.io/als-stat/web/thumbnail.png"
 html(lang="en")
   head(prefix="og: http://ogp.me/ns#")
     meta(charset="utf-8")
@@ -19,9 +19,19 @@ html(lang="en")
     #content
       h3 中華民國運動神經元疾病病友協會捐款金額統計
       p 
+        | 資料來源 : 
+        a(href="http://www.17885.com.tw/modules/group/group_content.php?Serial=123") 智邦公益館
+        |  ( 線上信用卡捐款頁面 )
+      p 
         | 從 2007年起，捐款總金額 652萬1362元，2014年8月單月截至今日為止金額 460萬6828元，佔總金額
         big: b(style="color:red") 70.6%
         | 。下圖 X 軸為時間， Y 軸為金額(新台幣)
       canvas#chart1
-      p 下圖為最近 80 天內的捐款金額，其中近三天 (8/19~8/21) 捐款金額佔八年來總金額比例的 69%
+      p
+        | 下圖為最近 80 天內的捐款金額，其中
+        big: b 近三天 (8/19~8/21) 
+        |  捐款金額佔
+        big: b 八年來
+        |  總金額比例的
+        big: b(style="color:red") 69%
       canvas#chart2

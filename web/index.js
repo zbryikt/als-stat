@@ -34,7 +34,10 @@ main = function($scope, $http){
       labels = ["2006/12"].concat(labels);
       datasets = [{
         data: [],
-        label: "捐款金額"
+        label: "捐款金額",
+        strokeColor: "rgba(255,0,0,1)",
+        pointColor: "rgba(0,0,0,0.5)",
+        pointStrokeColor: "rgba(0,0,0,0.9)"
       }];
       for (i$ = 0; i$ < 96; ++i$) {
         i = i$;
@@ -72,7 +75,10 @@ main = function($scope, $http){
       labels = ["05/31"].concat(labels);
       datasets = [{
         data: [],
-        label: "捐款金額"
+        label: "捐款金額",
+        strokeColor: "rgba(255,0,0,1)",
+        pointColor: "rgba(0,0,0,0.5)",
+        pointStrokeColor: "rgba(0,0,0,0.9)"
       }];
       for (i$ = 0; i$ < 83; ++i$) {
         i = i$;
