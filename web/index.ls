@@ -1,13 +1,22 @@
 main = ($scope, $http) ->
   [w,h,m] = [$(window)width!, $(window)height!, 60]
-  $('#chart').attr do
+
+  $('#chart1').attr do
     width: w - m * 2
     height: h - m * 3
-  ctx = $('#chart').0.getContext \2d
+  ctx1 = $('#chart1').0.getContext \2d
+  $scope.chart1 = new Chart(ctx1)
+
+  $('#chart2').attr do
+    width: w - m * 2
+    height: h - m * 3
+  ctx2 = $('#chart2').0.getContext \2d
+  $scope.chart2 = new Chart(ctx2)
+
   $scope.color = color = d3.scale.category20!
-  $scope.chart = new Chart(ctx)
 
   $scope.load = ->
+
     $http do
       url: \donate-group.json
       method: \GET
@@ -23,10 +32,33 @@ main = ($scope, $http) ->
         datasets.0.data ++= [d[i] or 0]
       ret = {labels, datasets}
       console.log ret
-      $scope.chart.Line ret, do
+      $scope.chart1.Line ret, do
         bezierCurveTension: 0.2
         animation: false
         datasetFill: false
         multiTooltipTemplate:"<%= datasetLabel %> - <%= value %>"
     .error (e) ->
+
+    $http do
+      url: \donate-group2.json
+      method: \GET
+    .success (data) ->
+      $scope.data = data
+      labels = []
+      for m from 6 to 8
+        for d from 1 to 31
+          if m == 6 and d == 31 => break
+          labels ++= ["#m/#d"]
+      labels = ["05/31"] ++ labels
+      datasets = [{data:[], label: "捐款金額"}]
+      for i from 0 til 83
+        datasets.0.data ++= [data[i] or 0]
+      ret = {labels, datasets}
+      $scope.chart2.Line ret, do
+        bezierCurveTension: 0.2
+        animation: false
+        datasetFill: false
+        multiTooltipTemplate:"<%= datasetLabel %> - <%= value %>"
+    .error (e) ->
+
   $scope.load!

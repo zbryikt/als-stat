@@ -22,15 +22,22 @@ all-list.sort (a,b) ->
 fs.write-file-sync \donate.json, JSON.stringify(all-list)
 
 group = {}
+group2 = {}
 for item in all-list
-  ret = /(\d+)\/(\d+)\/\d+/.exec item.date
+  ret = /(\d+)\/(\d+)\/(\d+)/.exec item.date
   if not ret => console.log "failed"
-  [y,m] = [ret.1, ret.2]map -> parseInt(it)
+  [y,m,d] = [ret.1, ret.2, ret.3]map -> parseInt(it)
   idx = (y - 2007 ) * 12 + m
   if !group[idx] => group[idx] = 0
   group[idx] += item.amount
+  if y == 2014 and m >= 6 =>
+    ddx = (m - 6) * 30 + d
+    if m == 8 => ddx += 1
+    if !group2[ddx] => group2[ddx] = 0
+    group2[ddx] += item.amount
 
 fs.write-file-sync \donate-group.json, JSON.stringify(group)
+fs.write-file-sync \donate-group2.json, JSON.stringify(group2)
 
 sum = 0
 for k,v of group
