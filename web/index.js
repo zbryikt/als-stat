@@ -21,20 +21,18 @@ main = function($scope, $http){
       url: 'donate-group.json',
       method: 'GET'
     }).success(function(d){
-      var labels, i$, y, j$, m, datasets, i, ref$, ret;
+      var labels, len, i$, y, j$, m, datasets, i, ref$, ret;
       $scope.data = d;
       labels = [];
+      len = 0;
       for (i$ = 2007; i$ <= 2014; ++i$) {
         y = i$;
         for (j$ = 1; j$ <= 12; ++j$) {
           m = j$;
           labels = labels.concat([y + "/" + (m > 9 ? '' : '0') + m]);
           if (m === 8 && y === 2014) {
-            break;
+            len = labels.length;
           }
-        }
-        if (m === 8 && y === 2014) {
-          break;
         }
       }
       labels = ["2006/12"].concat(labels);
@@ -47,10 +45,10 @@ main = function($scope, $http){
       }];
       for (i$ = 0; i$ < 96; ++i$) {
         i = i$;
-        if (i >= labels.length) {
+        (ref$ = datasets[0]).data = ref$.data.concat([d[i] || 0]);
+        if (i >= len) {
           break;
         }
-        (ref$ = datasets[0]).data = ref$.data.concat([d[i] || 0]);
       }
       ret = {
         labels: labels,

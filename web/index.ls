@@ -23,16 +23,16 @@ main = ($scope, $http) ->
     .success (d) ->
       $scope.data = d
       labels = []
+      len = 0
       for y from 2007 to 2014
         for m from 1 to 12
           labels ++= ["#y/#{if m > 9 => '' else '0'}#{m}"]
-          if m == 8 and y == 2014 => break
-        if m == 8 and y == 2014 => break
+          if m == 8 and y == 2014 => len = labels.length
       labels = ["2006/12"] ++ labels
       datasets = [{data:[], label: "捐款金額",strokeColor: "rgba(255,0,0,1)",pointColor: "rgba(0,0,0,0.5)",pointStrokeColor:"rgba(0,0,0,0.9)"}]
       for i from 0 til 96
-        if i >= labels.length => break
         datasets.0.data ++= [d[i] or 0]
+        if i >= len => break
       ret = {labels, datasets}
       console.log ret
       $scope.chart1.Line ret, do
