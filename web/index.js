@@ -29,6 +29,12 @@ main = function($scope, $http){
         for (j$ = 1; j$ <= 12; ++j$) {
           m = j$;
           labels = labels.concat([y + "/" + (m > 9 ? '' : '0') + m]);
+          if (m === 8 && y === 2014) {
+            break;
+          }
+        }
+        if (m === 8 && y === 2014) {
+          break;
         }
       }
       labels = ["2006/12"].concat(labels);
@@ -41,6 +47,9 @@ main = function($scope, $http){
       }];
       for (i$ = 0; i$ < 96; ++i$) {
         i = i$;
+        if (i >= labels.length) {
+          break;
+        }
         (ref$ = datasets[0]).data = ref$.data.concat([d[i] || 0]);
       }
       ret = {
